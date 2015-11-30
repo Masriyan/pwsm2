@@ -53,8 +53,7 @@ function chrH($vars){
 }
 function chk_request()
 {
-    #print $_SERVER['REQUEST_METHOD']."<hr>";
-    #die(print_r($this->object->GET,1));
+    
  switch($_SERVER['REQUEST_METHOD'])
  {
  	case 'GET':
@@ -86,7 +85,6 @@ function chk_request()
  	break;
  }
 }
-#function reg_bad_request($name,$value,$new_value,$template)
 function reg_bad_request($value,$new_value)
 {
 #$pattern=$template->code;
@@ -128,25 +126,22 @@ foreach($variables as $name=>$value)
             
 		foreach($this->templates as $template)
 		{		
-		#if($template->protocol==$method)
-		#{
+		
 		  $pattern=$template->code;
 		  if(stristr($value,$pattern)||stristr($value,"%".bin2hex($pattern)))
 			  {
 		  $new_value=substr($value,0,strpos($value,$pattern)).substr($value,strpos($value,$pattern)+strlen($pattern),strlen($value)-strpos($value,$pattern)+strlen($pattern));
 	
 		  $vars[$name]=$new_value;
-		  #$this->reg_bad_request($name,$value,$new_value,$template);
+		 
 		  $value=$new_value;
 			  }
-	  	#}
+	  
 	  	}
 	}
 	}
 }
 
-
-#if((!isset($new_value))&&(!$this->object->stoped_only))$this->reg_request($variables);
 if(isset($new_value))
     {
     return $this->chk_variables_via_pattern($vars);
@@ -163,17 +158,8 @@ $this->templates=$this->LIST_Q($sql);
 function register_agent()
 {
  $this->object=$this->chk_agent_object_registration($_SERVER['SCRIPT_FILENAME']);
- /*
- if(!$this->object=$this->chk_agent_object_registration($_SERVER['SCRIPT_FILENAME']))
- {
- $this->register_agent_object_registration($_SERVER['SCRIPT_FILENAME']);
- $this->object=$this->chk_agent_object_registration($_SERVER['SCRIPT_FILENAME']);
- }*/
+
 }
-/*function register_agent_object_registration($source)
-{
-$this->QUERY("INSERT INTO pwsm_objects	(object_source, created,POST,GET,COOKIE,stoped_only) VALUES ('".$this->Q($source)."',".time().",1,1,1,0)");
-}*/
 function chk_agent_object_registration($source)
 {
  return $this->ROW_Q("SELECT * FROM pwsm_objects WHERE object_source='".$this->Q($source)."'");
