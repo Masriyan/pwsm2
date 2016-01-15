@@ -19,7 +19,7 @@ Class DB
         
         if(!$this->conn = @pg_connect($dbstring))
         {
-        die("<div style='color:red'>Imporstable connect to db server ".$db_host." dbname ".$db_name."</div>");
+        die("<div style='color:red'>impossible connect to db server ".$db_host." dbname ".$db_name."</div>");
         exit();
         }
         

@@ -19,7 +19,7 @@ Class DB
            
         if(!$this->conn = @mysqli_connect($db_host,$db_user,$db_pass,$db_name))
         {
-        die("<div style='color:red'>Imporstable connect to db server ".$db_host." dbname ".$db_name."</div>");
+        die("<div style='color:red'>Impossible connect to db server ".$db_host." dbname ".$db_name."</div>");
         exit();
         }
         #die($db_name."<hr>");

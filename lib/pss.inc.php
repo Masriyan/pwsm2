@@ -239,7 +239,7 @@ if($never)$html.='<div class="error">New templates not exists in update.</div>';
 	 }
         if(isset($get['method'])&&($get['method']!='all'))
         {
-           $where.=" AND r.method='".$this->db->Q($_SESSION['filter']['method'])."'";
+           $where.=" AND r.method='".$this->db->Q($get['method'])."'";
         }
     if(isset($get['ip'])&&(!empty($get['ip'])))$where.=" AND r.remote_addr='".$this->db->Q($get['ip'],1)."'";
     if(isset($get['query'])&&(!empty($get['query'])))$where.=" AND r.query_string like '%".$this->db->Q($get['query'],1)."%'";

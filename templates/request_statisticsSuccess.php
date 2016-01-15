@@ -1,6 +1,4 @@
-<?php
-#$this->object_name=$object['object_url'];
- $object_folder=substr($object['object_source'],0,strrpos($object['object_source'],"/"));?>
+<?php $object_folder=substr($object['object_source'],0,strrpos($object['object_source'],"/"));?>
  <div class="box"><table>
  <tr><td>Object Source:</td><td><a href="?q=view_file&id=<?php echo $object['id'];?>" target=_blank><?php echo $object['object_source'];?></a></td></tr>
  <tr><td>Object Directory Browse:</td><td><a href="?q=new_agent&dir=<?php echo urlencode($object_folder);?>"><?php echo $object_folder;?></a></td></tr>
@@ -96,7 +94,6 @@ endforeach;?>
  <?php endif;?>
 <script>
 RS.chg_status='<?php echo isset($_GET['status'])?$_GET['status']:'all';?>';
-RS.sortby='<?php echo @$_SESSION['filter']['sortby'];?>';
 RS.chg_method='<?php echo isset($_GET['method'])?$_GET['method']:'all';?>';
 RS.results_step=<?php echo PSS::$results_step;?>;
 RS.ip='<?php echo (isset($_GET['ip'])&&(!empty($_GET['ip'])))?$_GET['ip']:'';?>';

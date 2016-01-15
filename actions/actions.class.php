@@ -37,7 +37,7 @@ Class Actions{
 			 }
                        
 			}else{
-			$_SESSION['error']='<div class="error">Imporstable to save template dublicated</div>';
+			$_SESSION['error']='<div class="error">Impossible to save template dublicated</div>';
 			}
 			header("Location:?q=config");
 			exit();
@@ -133,11 +133,11 @@ Class Actions{
         {
             $filename=$_GET['patch'];
             $backupfile=urlencode($filename);
-         if(filesize($filename)>200000)$data['errors'][]="Patching stopped! File is too large, imporstable to patch";
-	 else if(!is_writable($filename))$data['errors'][]="Patching stopped! Check permission for file writing, imporstable to patch";
-	 else if(!$pss->chk_php_file($filename))$data['errors'][]="Patching stopped! Is not php file, imporstable to patch";
+         if(filesize($filename)>200000)$data['errors'][]="Patching stopped! File is too large, impossible to patch";
+	 else if(!is_writable($filename))$data['errors'][]="Patching stopped! Check permission for file writing, impossible to patch";
+	 else if(!$pss->chk_php_file($filename))$data['errors'][]="Patching stopped! Is not php file, impossible to patch";
 	 else if(file_exists($backupfile))$data['errors'][]="Patching stopped! Backup file ".$backupfile." already exists, cannot continue backup";
-	 else if(!$pss->backupfile($filename))$data['errors'][]="Patching stopped! Cannot backup filem ,check permissions of backup/ directory, imporstable to patch";
+	 else if(!$pss->backupfile($filename))$data['errors'][]="Patching stopped! Cannot backup filem ,check permissions of backup/ directory, impossible to patch";
          else if($pss->chk_agent_code($filename)) $data['errors'][]="Patching stopped! Cannot patch,code already injected";
          else if($pss->patch_target($filename))
             {
@@ -152,9 +152,9 @@ Class Actions{
               
               $backupfile="backups/".urlencode($filename);
            
-            if(!$pss->chk_agent_code($filename))$data['errors'][]="Unpatching stopped! Agent code not exists in the file:<b>".$filename."</b>, imporstable unpatch";
+            if(!$pss->chk_agent_code($filename))$data['errors'][]="Unpatching stopped! Agent code not exists in the file:<b>".$filename."</b>, impossible unpatch";
             
-            if(!file_exists($backupfile))$data['errors'][]="Unpatching stopped! Backup file ".$backupfile." doesnt exists, imporstable return original file";
+            if(!file_exists($backupfile))$data['errors'][]="Unpatching stopped! Backup file ".$backupfile." doesnt exists, impossible return original file";
 
             if($pss->restore_original($filename))
                  {
@@ -437,7 +437,7 @@ Class Actions{
     if(!$wisard->check_connect($_SESSION['post']))
          {
         $data['success']=false;
-             $data['errors'][]="Imporstable connect to DB server";
+             $data['errors'][]="Impossible connect to DB server";
          }else{
              
              $data['msgs'][]="Connect to DB server successfully";

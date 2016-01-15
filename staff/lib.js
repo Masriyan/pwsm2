@@ -199,7 +199,7 @@ TF.more_variables4test=function ()
 var RS={};
 RS.init=function (){
     RS.init_show_info();
-    RS.init_headers_actions();
+    //RS.init_headers_actions();
     RS.init_search_form();
     RS.init_more_btn();
 };
@@ -262,6 +262,7 @@ RS.init_more_btn=function (){
             });
   });  
 };
+/*
 RS.init_headers_actions=function (){
   $('#chg_status').click(function (event){
       RS.show_info(event,'chg_status',RS.chg_status);
@@ -281,41 +282,39 @@ RS.init_headers_actions=function (){
   $('#chg_date').click(function (event){
       RS.show_info(event,'chg_date',RS.sortby);
   });
-};
+};*/
 RS.show_info=function (e,type,id)
 {
-	
-  
-	if($('#info').html()==null)
-	{
-        $.ajax('ajax.php?act='+type+'&id='+id).done(function (http){
-           // $(e.target).attr('title',http).addClass('tooltip').tooltip();
-            
-            var box=$('<div>').html(http).attr("id","info");
-           if (e== undefined)
-	   {
-	     
-	      // IE case
-	      var d= (document.documentElement &&
-	      document.documentElement.scrollLeft != null) ?
-	      document.documentElement : document.body;
-	     
-	     docX= x + d.scrollLeft;
-	     docY= y + d.scrollTop;
-	   }
-	   else
-	   {
-	     
-	      // all other browsers
-	      docX= e.pageX;
-	      docY= e.pageY;
-	     
-	   }
-            box.css({'position':'absolute','left':docX,'top':(docY+2)});
-           $('body').append(box);
-        });
-        
-   	}
+    if($('#info').html()==null)
+    {
+    $.ajax('ajax.php?act='+type+'&id='+id).done(function (http){
+       // $(e.target).attr('title',http).addClass('tooltip').tooltip();
+
+        var box=$('<div>').html(http).attr("id","info");
+       if (e== undefined)
+       {
+
+          // IE case
+          var d= (document.documentElement &&
+          document.documentElement.scrollLeft != null) ?
+          document.documentElement : document.body;
+
+         docX= x + d.scrollLeft;
+         docY= y + d.scrollTop;
+       }
+       else
+       {
+
+          // all other browsers
+          docX= e.pageX;
+          docY= e.pageY;
+
+       }
+        box.css({'position':'absolute','left':docX,'top':(docY+2)});
+       $('body').append(box);
+    });
+
+    }
 };
 RS.hide_info=function ()
 {
