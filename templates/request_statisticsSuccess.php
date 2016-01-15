@@ -25,14 +25,12 @@
     <td>IP:<input type="text" name="ip" value="<?php echo (isset($_GET['ip'])?$_GET['ip']:'');?>" class="inp"></td>
     <td>Query fragment:<input type="text" name="query" value="<?php echo (isset($_GET['query'])?$_GET['query']:'');?>" class="inp"></td>
     <td>Date:<input type="date" name="from" id="from" value="<?php echo (isset($_GET['from'])?$_GET['from']:'');?>" class="inp"> - <input type="date" name="to" id="to" value="<?php echo (isset($_GET['to'])?$_GET['to']:'');?>" class="inp"></td>
-    <td>Status:
-        
-        <select name="status" class="inp">
+    <td>Status:<select name="status" class="inp">
             <?php
             $opts=Array('all'=>'All','1'=>'Blocked','0'=>'Allowed');
             foreach($opts as $k=>$v):
             ?>
-            <option value="<?php echo $k?>" <?php if(isset($_GET['status'])&&($_GET['status']===$k)):?> selected<?php endif;?>><?php echo $v;?></option>
+            <option value="<?php echo $k?>" <?php if(isset($_GET['status'])&&($_GET['status']==$k)):?> selected<?php endif;?>><?php echo $v;?></option>
             <?php endforeach;?>
         </select>
     </td>
@@ -97,9 +95,9 @@ endforeach;?>
  <a href="javascript://" rel="<?php echo $id;?>" id="more_btn">More...</a></div>
  <?php endif;?>
 <script>
-RS.chg_status='<?php echo $_SESSION['filter']['status'];?>';
-RS.sortby='<?php echo $_SESSION['filter']['sortby'];?>';
-RS.chg_method='<?php echo $_SESSION['filter']['method'];?>';
+RS.chg_status='<?php echo isset($_GET['status'])?$_GET['status']:'all';?>';
+RS.sortby='<?php echo @$_SESSION['filter']['sortby'];?>';
+RS.chg_method='<?php echo isset($_GET['method'])?$_GET['method']:'all';?>';
 RS.results_step=<?php echo PSS::$results_step;?>;
 RS.ip='<?php echo (isset($_GET['ip'])&&(!empty($_GET['ip'])))?$_GET['ip']:'';?>';
 RS.query='<?php echo (isset($_GET['query'])&&(!empty($_GET['query'])))?$_GET['query']:'';?>';
