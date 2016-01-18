@@ -64,13 +64,15 @@
  $i=0;
  $color_tr="#fff";
  if($requests)
- foreach($requests as $req):?>
+ foreach($requests as $req):
+     #print_r(unserialize($req['vars']));
+     ?>
  	
  	
 <tr style="background:<?php echo $color_tr;?>">
 <td class="status_w"><span class="show_info" show_type="request_reason" show_id="<?php echo $req['id'];?>" title=""><?php echo PSS::_draw_request_status($req['status']);?></span></td>
-<td><div class="url_w"><a href="<?php echo $req['url'];?>" target=_blank><?php echo $req['url'];?></a></div><div class="copy_box">&nbsp;<?php echo $pss->copy_link($req['url']);?></div></td>
- <td><div class="query_string_w"><a href="<?php echo $req['query_string'];?>" target="Blank"><?php echo $req['query_string'];?></a></div><div class="copy_box">&nbsp;<?php echo $pss->copy_link($req['query_string']);?></div></td>
+<td><div class="url_w"><a href="<?php echo $req['url'];?>" target=_blank><?php echo $req['url'];?></a></div><div class="copy_box">&nbsp;<?php echo $pss->copy_link($req['url'],$req['vars'],$req['method']);?></div></td>
+ <td><div class="query_string_w"><a href="<?php echo $req['query_string'];?>" target="Blank"><?php echo $req['query_string'];?></a></div><div class="copy_box">&nbsp;<?php echo $pss->copy_link($req['query_string'],$req['vars'],$req['method']);?></div></td>
  <td class="method_w"><?php echo $req['method'];?></td>
  <td class="remote_addr_w"><?php echo $req['remote_addr'];?></td>
 

@@ -166,7 +166,7 @@ TF.send_test_form=function ()
     }
     var url=$('#url').val();
     if((url.substr(0,7)!='http://')&&(url.substr(0,8)!='https://'))url='http://'+url;
-     var myform=$("<form>").attr("action", url).attr("method", $('#method').val());
+     var myform=$("<form>").attr("action", url).attr('target','_blank').attr("method", $('#method').val());
  $('#variables li').each(function (i,li){
      if($(li).find('.name').val().length==0)
      {

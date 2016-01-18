@@ -33,6 +33,7 @@ var $tables;
   `object_id` bigint(20) NOT NULL,
   `remote_addr` varchar(50) collate utf8_bin NOT NULL,
   `created` bigint(20) NOT NULL,
+  `vars` text collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `folder_id` (`object_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7643 DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;",
@@ -81,6 +82,7 @@ WITH (OIDS=FALSE);',
   object_id bigint,
   remote_addr character varying(50),
   created bigint,
+  vars text,
   CONSTRAINT pwsm_requests_id_idx PRIMARY KEY (id)
 )
 WITH (OIDS=FALSE);',

@@ -93,8 +93,10 @@ Blocked value <b>".htmlspecialchars(print_r($value,1))."</b>
 Changed to <b>".htmlspecialchars(print_r($new_value,1))."</b>";
 $qs="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']."?".$_SERVER['QUERY_STRING'];
 $url="http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-$sql="INSERT INTO pwsm_requests (url,method,query_string,reason,status,object_id,created,remote_addr) "
-        . "VALUES ('".$this->Q($url)."','".$this->Q($_SERVER['REQUEST_METHOD'])."','".$this->Q($qs)."','".$this->Q($reason)."',1,".$this->object->id.",".time().",'".$this->Q($_SERVER['REMOTE_ADDR'])."')";
+$vars=($_SERVER['REQUEST_METHOD']=='POST')?$_POST:$_GET;
+$vars=mysql_real_escape_string(serialize($vars));
+$sql="INSERT INTO pwsm_requests (url,method,query_string,reason,status,object_id,created,remote_addr,vars) "
+        . "VALUES ('".$this->Q($url)."','".$this->Q($_SERVER['REQUEST_METHOD'])."','".$this->Q($qs)."','".$this->Q($reason)."',1,".$this->object->id.",".time().",'".$this->Q($_SERVER['REMOTE_ADDR'])."','".$vars."')";
 
 $idd=$this->QUERY($sql);
 }
@@ -107,8 +109,10 @@ foreach($names as $name){$reason.="<br><font color='red'>".$name."</font>";}
 #print_r($_SERVER);
 $qs="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']."?".$_SERVER['QUERY_STRING'];
 $url="http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-$sql="INSERT INTO pwsm_requests (url,method,query_string,reason,status,object_id,created,remote_addr) "
-        . "VALUES ('".$this->Q($url)."','".$this->Q($_SERVER['REQUEST_METHOD'])."','".$this->Q($qs)."','".$this->Q($reason)."',0,".$this->object->id.",".time().",'".$this->Q($_SERVER['REMOTE_ADDR'])."')";
+$vars=($_SERVER['REQUEST_METHOD']=='POST')?$_POST:$_GET;
+$vars=mysql_real_escape_string(serialize($vars));
+$sql="INSERT INTO pwsm_requests (url,method,query_string,reason,status,object_id,created,remote_addr,vars) "
+        . "VALUES ('".$this->Q($url)."','".$this->Q($_SERVER['REQUEST_METHOD'])."','".$this->Q($qs)."','".$this->Q($reason)."',0,".$this->object->id.",".time().",'".$this->Q($_SERVER['REMOTE_ADDR'])."','".$vars."')";
 #die($sql);
 $this->QUERY($sql);
 }

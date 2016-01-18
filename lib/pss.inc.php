@@ -274,9 +274,9 @@ if($never)$html.='<div class="error">New templates not exists in update.</div>';
  return $data;
  }
 
- static function copy_link($url)
+ static function copy_link($url,$vars=Array(),$method='GET')
  {
- 	return '<a href="?q=test_form&url='.urlencode($url).'" class="copy_lnk" title="copy URL to Test JS Form">Copy</a>';
+ 	return '<a href="?q=test_form&url='.urlencode($url).((count($vars))?'&vars='.urlencode($vars):'').'&method='.$method.'" class="copy_lnk" title="copy URL to Test JS Form">Copy</a>';
  }
  static function _draw_request_status($status)
  {
