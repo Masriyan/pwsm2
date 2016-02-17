@@ -1,4 +1,4 @@
-<div class="box" style="width:550px;margin:0 auto;">
+<div class="box" style="width:550px;margin:0 auto;">      
 <h2 class="title">Now Free! But Please donate for Our project, and get Support</h2>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">

@@ -68,13 +68,14 @@ var $db;
     include_once("../conf/config.php");
 
     include_once '../lib/'.$db_type.'/db.inc.php';
-    #die($db_type."XX<hr>");
+  
     }
  
     $db=new DB($db_host,$db_name,$db_user,$db_pass);
     
     $this->db=$db;
-#die($db);
+    
+
     return $db;
     }
     function request($url)

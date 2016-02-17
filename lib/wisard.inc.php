@@ -182,10 +182,6 @@ WITH (OIDS=FALSE);'
        $"."db_user='".$post['user']."';
        $"."db_pass='".$post['pass']."';
        $"."db_type='".$post['dbtype']."';
-
-
-
-
        ?>");
     fclose($f);
     return file_exists("../conf/config.php");

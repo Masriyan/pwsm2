@@ -16,9 +16,6 @@ var $memcache_obj;
  global $start;
  //extending db class
  $this->db=$start->db;
- 
-
-   #$this->chk_db();
  }
  function delete_user($user)
  {
